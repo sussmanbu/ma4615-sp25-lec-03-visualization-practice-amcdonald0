@@ -31,13 +31,32 @@ For now, see what you can do just using `ggplot`.
 
 ```{r}
 covid_data_count |> 
-  filter(state == "MA") |> 
+  filter(state %in% c("MA", "MN", "FL")) |> 
   ggplot(aes(x = date, y = Cases, color = race)) + geom_line()
+
 ```
 
-1. After making and refining some plots, pick one and save the code and describe what you observe?
-2. What conclusions can you draw?
-3. What were you not able to do due to not having the coding knowledge?
-4. What made previous plots you made hard to interpret/understand? What did you do to improve/change them to ease interpretation?
-5. What other data would be useful to better understand this data?
+```{r}
+covid_data_simple |> 
+  filter(date %in% c("2020-04-12","2020-04-15"))|>
+ggplot(aes(x = date, y = Tests, color = race)) + geom_point()
+`````````
 
+
+```{r}
+covid_data_count |> 
+  filter(state == "MA") |> 
+ggplot(aes(x = population, y = Cases, color = race, shape = race)) + geom_point() 
+`````````
+1. After making and refining some plots, pick one and save the code and describe what you observe?
+
+2. What conclusions can you draw?
+
+The code given allows us to see a 1) Monthly view of total cases and 2) Monthly view of total cases labeled by race. Making some alterations to the code and looking at the table data, I was able to make a table that shows a daily view of tests taken organized by race.
+
+3. What were you not able to do due to not having the coding knowledge?
+
+4. What made previous plots you made hard to interpret/understand? What did you do to improve/change them to ease interpretation?
+
+5. What other data would be useful to better understand this data? 
+Age might be a good datapoint as it tells us moer about the demographics; particularly the demographics within specific races. 
